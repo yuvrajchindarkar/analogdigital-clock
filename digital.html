@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITAL CLOCL</title>
+    <link rel="icon" href="https://cdn.pixabay.com/photo/2013/07/12/17/22/hourglass-152090_960_720.png" type="image/x-icon">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            /* background: linear-gradient( red, rgb(10, 2, 70)); */
+            background: url(https://wallpapers.com/images/featured-full/dark-5u7v1sbwoi6hdzsb.jpg);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .clock {
+            font-size: 70px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            width: 500px;
+            height: 200px;
+            border-radius: 30px;
+            border: 3px solid rgb(0, 29, 248);
+            box-shadow: 0 0 70px blue;
+        }
+        
+        .container {
+            background: #000;
+            height: 400px;
+            width: 700;
+            border-radius: 30px;
+            box-shadow: 0 0 70px blue;
+            border: 3px solid rgb(0, 29, 248);
+        }
+        
+        h2 {
+            font-size: 50px;
+            color: rgb(49, 18, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        h4 {
+            color: aliceblue;
+            display: flex;
+            margin-bottom: 4px;
+        }
+        /* .clock::before {
+            content: "";
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            width: 700px;
+            height: 200px;
+            background: linear-gradient(10deg, transparent, transparent, red, red, red);
+            animation: yuvi 6s linear infinite;
+        }
+        
+        .clock::after {
+            content: "";
+            position: absolute;
+            inset: 4px;
+            background: rgb(0, 0, 0);
+            border-radius: 30px;
+        }
+        
+        @keyframes yuvi {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>DIGITAL CLOCK</h2>
+        <div id="MyClockDisplay" class="clock" onload="showTime()">
+        </div>
+    </div>
+
+    <h4>ANALOG CLOCK <span><a href="index.html" target="_blank">clikc here</a></span></h4>
+
+    <script>
+        function showTime() {
+            var date = new Date();
+            var h = date.getHours(); // 0 - 23
+            var m = date.getMinutes(); // 0 - 59
+            var s = date.getSeconds(); // 0 - 59
+            var session = "AM";
+
+            if (h == 0) {
+                h = 12;
+            }
+
+            if (h > 12) {
+                h = h - 12;
+                session = "PM";
+            }
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+            var time = h + ":" + m + ":" + s + " " + session;
+            document.getElementById("MyClockDisplay").innerText = time;
+            document.getElementById("MyClockDisplay").textContent = time;
+
+            setTimeout(showTime, 1000);
+
+        }
+
+        showTime();
+    </script>
+
+</body>
+
+</html>
